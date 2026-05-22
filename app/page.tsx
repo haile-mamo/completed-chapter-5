@@ -4,7 +4,6 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import clsx from 'clsx';
-// 1. የ Next.js ን የምስል ኮምፖነንት ከላይ መጥራት
 import Image from 'next/image';
 
 export default function Page() {
@@ -20,12 +19,13 @@ export default function Page() {
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-red-500 px-6 py-10 md:w-2/5 md:px-20">
           
+          {/* ✓ የተስተካከለው ክፍል፡ ማወዳደሪያውን ቀለል በማድረግ ታይፕስክሪፕትን አረካነው */}
           <div 
             className={clsx(
               'w-12 h-12', 
               {
-                'bg-black': isPending === true,
-                'bg-blue-500': isPending === false,
+                'bg-black': isPending,      // true ከሆነ ጥቁር ይሆናል
+                'bg-blue-500': !isPending,  // false ከሆነ ሰማያዊ ይሆናል
               }
             )}
           />
@@ -47,7 +47,7 @@ export default function Page() {
         </div>
         
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          {/* ✓ 2. የኮምፒውተር ምስል (በሞባይል ላይ hidden ነው፣ በኮምፒውተር md:block ይሆናል) */}
+          {/* የኮምፒውተር ምስል */}
           <Image
             src="/hero-desktop.png"
             width={1000}
@@ -56,7 +56,7 @@ export default function Page() {
             alt="Screenshots of the dashboard project showing desktop version"
           />
 
-          {/* ✓ 3. የሞባይል ምስል ፈተና (በሞባይል ላይ block ነው፣ በኮምፒውተር md:hidden ይሆናል) */}
+          {/* የሞባይል ምስል */}
           <Image
             src="/hero-mobile.png"
             width={560}
